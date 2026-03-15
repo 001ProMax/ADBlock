@@ -20,7 +20,6 @@
 	],
 	"systemVersion": 15,
 	"license": "Apache-2.0",
-	"type": "module",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/BiliUniverse/ADBlock.git"
@@ -29,6 +28,10 @@
 		"example": "example"
 	},
 	"scripts": {
+		"dev:netlify": "npx netlify dev",
+		"dev:vercel": "npx vercel dev",
+		"deploy:netlify": "npx netlify deploy --prod",
+		"deploy:vercel": "npx vercel deploy --prod",
 		"serve": "webpack serve",
 		"build": "rspack build",
 		"build:dev": "rspack build -c rspack.dev.config.js --mode=development",
@@ -41,6 +44,7 @@
 		"iOS >= 15"
 	],
 	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
 		"@iringo/arguments-builder": "^1.8.5",
 		"@protobuf-ts/plugin": "^2.11.1",
 		"@rspack/cli": "^1.7.4",
@@ -53,6 +57,8 @@
 		"@nsnanocat/util": "^2.0.0",
 		"@protobuf-ts/runtime": "^2.11.1",
 		"@protobuf-ts/runtime-rpc": "^2.11.1",
-		"crypto-js": "^4.2.0"
+		"crypto-js": "^4.2.0",
+		"fetch-cookie": "^3.2.0",
+		"hono": "^4.12.8"
 	}
 }
