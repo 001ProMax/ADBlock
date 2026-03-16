@@ -20,7 +20,8 @@ export async function Request($request) {
 	 * @type {{Settings: import('./types').Settings}}
 	 */
 	const { Settings, Caches, Configs } = setENV("BiliBili", "ADBlock", database);
-	Console.logLevel = Settings.LogLevel;
+	// Console.logLevel = Settings.LogLevel;
+	Console.logLevel = "OFF";
 	// 创建空数据
 	const body = { code: 0, message: "0", data: {} };
 	// 方法判断

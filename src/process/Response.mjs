@@ -28,7 +28,8 @@ export async function Response($request, $response) {
 	 * @type {{Settings: import('./types').Settings}}
 	 */
 	const { Settings, Caches, Configs } = setENV("BiliBili", "ADBlock", database);
-	Console.logLevel = Settings.LogLevel;
+	// Console.logLevel = Settings.LogLevel;
+	Console.logLevel = "OFF";
 	// 创建空数据
 	let body = { code: 0, message: "0", data: {} };
 	// 格式判断
