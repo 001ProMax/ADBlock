@@ -4,9 +4,6 @@ import { Request } from "./process/Request.mjs";
 import { Response } from "./process/Response.mjs";
 /***************** Processing *****************/
 export default new Hono().all("/:rest{.*}", async c => {
-    /* todo */
-    // globalThis.$arguments = url.searchParams.get("Weather_Provider");
-
     const url = new URL(c.req.url);
     switch (true) {
         case url.hostname.startsWith("test."): {
@@ -25,16 +22,13 @@ export default new Hono().all("/:rest{.*}", async c => {
         method: c.req.method,
         url: url.toString(),
         headers: c.req.header(),
-        body: await c.req.arrayBuffer()
-            .then(b => new Uint8Array(b))
-            .catch(e => {
-                console.info(e);
-                return undefined;
-            }),
+        body: await c.req.arrayBuffer().then(r => r.byteLength ? r : undefined),
     };
     let $response;
     ({ $request, $response } = await Request($request));
     if (!$response) {
+        delete $request.headers["host"];
+        delete $request.headers["cf-connecting-ip"];
         $response = await fetch($request);
         $response = await Response($request, $response);
     };
